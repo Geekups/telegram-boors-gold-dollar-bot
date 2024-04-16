@@ -1,2 +1,4 @@
 1- reading this:
 https://medium.com/@bamdadtabari/pythonic-code-what-why-ecf21dbfe460
+
+2-
