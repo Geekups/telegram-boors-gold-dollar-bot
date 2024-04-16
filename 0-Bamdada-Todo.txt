@@ -7,3 +7,5 @@ in " send to channel.py " file =>
 2- add anonsurf as a tunnel
 
 3- Add Gold And Dollar to the end of the channel message (maybe with py scrapping)
+
+4- error handling (else + try/catch) * for each function *
