@@ -1,0 +1,5 @@
+pyrogram==2.0.106
+finpy-tse==1.2.6
+asyncio==3.4.3
+asyncio==3.4.3
+tabulate==0.8.10
