@@ -1,0 +1,11 @@
+1- reading this:
+https://medium.com/@bamdadtabari/pythonic-code-what-why-ecf21dbfe460
+
+2-use phind and another telegram lib to send people invitation message in 
+ telegram using their phone number in excel. 
+ if they have not telegram, just use "pass"
+
+
+3- make your code more pythonic
+
+4- error handling (else + try/catch) * for each function *

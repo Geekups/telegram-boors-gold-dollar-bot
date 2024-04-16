@@ -1,0 +1,11 @@
+part1:
+in " send to channel.py " file =>
+
+1- use another shits to get the real time stock data  (imp: 4/10)
+[ if i do this maybe i dont need anonsurf start/stop ]
+
+2- add anonsurf as a tunnel
+
+3- Add Gold And Dollar to the end of the channel message (maybe with py scrapping)
+
+4- error handling (else + try/catch) * for each function *
