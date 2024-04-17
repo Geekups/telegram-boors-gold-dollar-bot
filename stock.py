@@ -1,9 +1,5 @@
 from pyrogram import Client, filters
-from pyrogram.types import Message , InlineKeyboardButton , InlineKeyboardMarkup
-from tabulate import tabulate
 import pandas as pd
-import os
-import time
 import finpy_tse as fpy
 
 
@@ -17,29 +13,19 @@ bot = Client("mtest bot" ,
             api_id = api_id ,
             api_hash = api_hash , 
             bot_token = bot_token ,
-            # proxy= proxy1
-
 )
 
 
 user_data = {}
-admin_info = {}
-
-# لیست مجاز chat_id های ادمین
-admin_chat_ids = {
-    181122579, # مثال: شماره تلفن ادمین را به عنوان chat_id در نظر بگیرید
-    # اضافه کردن بیشتر chat_id های ادمین در اینجا
-}
 
 
-
-# خواندن فایل users.xlsx
+# Read users.xlsx file
 users_df = pd.read_excel('users.xlsx')
 
-# ایجاد لیست از chat_id های مجاز
+# Creating a list of allowed chat_ids
 allowed_chat_ids = users_df['chat_id'].tolist()
 
-# تعریف دستور برای مشاهد اطلاعات سهم مورد نظر
+# Define the command to view the desired share information
 @bot.on_message(filters.command('stock') & filters.private)
 def get_excel_info_command(client, message):
     if message.chat.id in allowed_chat_ids:
@@ -48,7 +34,7 @@ def get_excel_info_command(client, message):
     else:
         message.reply_text("برای مشاهده اطلاعات سهام ها، ابتدا با دستور /register ثبت نام کنید")
 
-# دریافت اطلاعات سهم و بررسی قیمت و...
+# Receive share information and check the price and...
 @bot.on_message(not filters.command and filters.create(lambda message, _: message.chat.id in user_data and user_data[message.chat.id]['state'] == 'waiting_for_stock_name'))
 def handle_message1(client, message):
     chat_id = message.chat.id
@@ -60,7 +46,7 @@ def handle_message1(client, message):
         try:
             
             MarketWatch = fpy.Get_MarketWatch()
-                # خواندن اطلاعات از دیتا فریم
+            # Reading information from the dataframe
             df = MarketWatch[0].reset_index()
 
             
