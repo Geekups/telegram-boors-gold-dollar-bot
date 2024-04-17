@@ -19,7 +19,7 @@ def stop_anonsurf():
 
 # Example usage
 start_anonsurf()
-sleep(20)
+sleep(2)
 gettogo = input("go konim?")
 # Do some tasks while anonsurf is running
 stop_anonsurf()
