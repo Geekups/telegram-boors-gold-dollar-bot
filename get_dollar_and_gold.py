@@ -1,17 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime
-
-# Function to get the current time
-def get_current_time():
-    # Get the current datetime
-    now = datetime.now()
-    # Extract hour, minute, and second
-    hour = now.hour
-    minute = now.minute
-    second = now.second
-    # Return the time as a tuple
-    return hour, minute, second
 
 # Function to get the dollar and gold prices in Iranian Toman for any given time
 def get_prices():
@@ -44,15 +32,11 @@ def get_prices():
         print("Failed to fetch page. Status code:", response.status_code)
         return None, None
 
-# Example usage
-# Get the current time
-current_hour, current_minute, current_second = get_current_time()
-print("Current time:", current_hour, ":", current_minute, ":", current_second)
 
 # Get the dollar and gold prices for the current time
 dollar_price, gold_price = get_prices()
 if dollar_price and gold_price:
-    print("Dollar price in Toman:", dollar_price)
-    print("Gold price in Toman:", gold_price)
+    print("Dollar price in Rial:", dollar_price)
+    print("Gold price in Rial:", gold_price)
 else:
     print("Failed to fetch prices.")
