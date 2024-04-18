@@ -28,16 +28,15 @@ def get_prices():
         # Assuming the prices are in elements with specific IDs or classes
         # You'll need to inspect the website to find the correct selectors
         dollar_price_element = soup.find(id='usdmax')  # this is rial
-        gold_price_element = soup.find(id='gold-price')
+        gold_24_price_element = soup.find(id='geram24')
         
-        if dollar_price_element and gold_price_element:
+        if dollar_price_element and gold_24_price_element:
             # Extract the prices
-            dollar_price = float(dollar_price_element.text)
-            gold_price = float(gold_price_element.text)
+            dollar_price = float(dollar_price_element.text) # this is rial
+            gold_price = float(gold_24_price_element.text) # this is rial
             # Convert prices to Iranian Toman (assuming 1 USD = 10000 Toman and 1 gram of gold = 10000 Toman)
-            dollar_price_toman = dollar_price * 10000
-            gold_price_toman = gold_price * 10000
-            return dollar_price_toman, gold_price_toman
+           
+            return dollar_price, gold_price
         else:
             print("Failed to find price elements.")
             return None, None
