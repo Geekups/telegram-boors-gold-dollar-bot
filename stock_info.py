@@ -25,22 +25,24 @@ def get_stock_info(symbol):
             # Use the CSS selector to find the element
             # Note: The CSS selector you provided is quite specific and might need adjustment
             # based on the actual structure of the website's HTML.
-            stock_Ticker = soup.select_one("#content > div.symbol-information > div.symbol-info.symbol-box > div:nth-child(2) > div:nth-child(1) > span.txt")
+            stock_Ticker = soup.select_one("#content > div.symbol-information > div.symbol-info.symbol-box > div:nth-child(2) > div:nth-child(1) > span.txt").text
             stock_Time = soup.select_one("#content > div.symbol-information > div:nth-child(4) > div.today-information.symbol-box > div:nth-child(2) > span.num")  
-            stock_end = soup.select_one("#content > div.symbol-information > div:nth-child(4) > div.today-information.symbol-box > div:nth-child(3) > span:nth-child(2)")     
+            stock_end = soup.select_one("#content > div.symbol-information > div:nth-child(4) > div.today-information.symbol-box > div:nth-child(3) > span:nth-child(2)").text     
             stock_Close = soup.select_one("#content > div.symbol-information > div:nth-child(4) > div.today-information.symbol-box > div:nth-child(4) > span:nth-child(2)")
             stock_Close_Percent = soup.select_one("#content > div.symbol-information > div:nth-child(4) > div.today-information.symbol-box > div:nth-child(3) > span.num.green")
             stock_Market_Cap = soup.select_one("#content > div.symbol-information > div:nth-child(4) > div.today-information.symbol-box > div:nth-child(7) > span.num")
+            if stock_end == "0":
+                 return("خطا در دریافت اطلاعات.")
 
             # Extract and print the information
+            else:
+                return (f'''🕘آخرین زمان معاملاتی: {stock_Time.text}
 
-            return (f'''🕘آخرین زمان معاملاتی: {stock_Time.text}
-
-    📊نام سهم:  {stock_Ticker.text}
+    📊نام سهم:  {stock_Ticker}
 
     💵 قیمت: {stock_Close.text}
 
-    📉درصد تغییر: {stock_Close_Percent.text}
+    📉درصد تغییر: %{stock_Close_Percent.text}
 
     💰ارزش بازار : {stock_Market_Cap.text}''')
     
@@ -48,4 +50,4 @@ def get_stock_info(symbol):
                 
             return (f"Failed to find the data for {symbol}.")
 
-print(get_stock_info("فولاد"))
+print(get_stock_info("dfdولاد"))

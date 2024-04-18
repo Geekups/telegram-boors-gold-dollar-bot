@@ -23,10 +23,10 @@ def stop_anonsurf(password):
     except subprocess.CalledProcessError as e:
         print(f"Failed to stop Anonsurf: {e}")
 
-# Example usage
-password = "Jkl;Fdsa" #"your_sudo_password_here" # Replace with your actual sudo password
-start_anonsurf(password)
-sleep(2)
-gettogo = input("go konim?")
-# Do some tasks while anonsurf is running
-stop_anonsurf(password)
+# # Example usage
+# password = "Jkl;Fdsa" #"your_sudo_password_here" # Replace with your actual sudo password
+# start_anonsurf(password)
+# sleep(2)
+# gettogo = input("go konim?")
+# # Do some tasks while anonsurf is running
+# stop_anonsurf(password)

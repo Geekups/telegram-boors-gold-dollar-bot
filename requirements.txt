@@ -3,3 +3,5 @@ finpy-tse==1.2.6
 asyncio==3.4.3
 tabulate==0.8.10
 TgCrypto==1.2.5
+pytz==2023.4
+bs4==4.12.3
