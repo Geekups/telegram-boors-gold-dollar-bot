@@ -1,6 +1,4 @@
 from pyrogram import Client, filters
-import pandas as pd
-import finpy_tse as fpy
 import anonsurf_handler
 import stock_info
 
