@@ -14,9 +14,9 @@ def get_current_time():
     return hour, minute, second
 
 # Function to get the dollar and gold prices in Iranian Toman for any given time
-def get_prices(hour, minute):
+def get_prices():
     # Placeholder website URL
-    url = "https://www.example.com/prices?hour={}&minute={}".format(hour, minute)
+    url = "https://irarz.com/"
     
     # Make a GET request to the website
     response = requests.get(url)
@@ -27,7 +27,7 @@ def get_prices(hour, minute):
         soup = BeautifulSoup(response.text, 'html.parser')
         # Assuming the prices are in elements with specific IDs or classes
         # You'll need to inspect the website to find the correct selectors
-        dollar_price_element = soup.find(id='dollar-price')
+        dollar_price_element = soup.find(id='usdmax')  # this is rial
         gold_price_element = soup.find(id='gold-price')
         
         if dollar_price_element and gold_price_element:
@@ -51,7 +51,7 @@ current_hour, current_minute, current_second = get_current_time()
 print("Current time:", current_hour, ":", current_minute, ":", current_second)
 
 # Get the dollar and gold prices for the current time
-dollar_price, gold_price = get_prices(current_hour, current_minute)
+dollar_price, gold_price = get_prices()
 if dollar_price and gold_price:
     print("Dollar price in Toman:", dollar_price)
     print("Gold price in Toman:", gold_price)
