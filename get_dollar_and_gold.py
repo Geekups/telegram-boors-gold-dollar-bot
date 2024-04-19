@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from arabic_reshaper import reshape
-from bidi.algorithm import get_display
+
 
 
 def convert_farsi_to_english(farsi_text):
@@ -34,8 +33,8 @@ def get_prices():
         
         if dollar_price_element and gold_price_element:
             # Extract the prices
-            dollar_price = convert_farsi_to_english(dollar_price_element.text)
-            gold_price = convert_farsi_to_english(gold_price_element.text)
+            dollar_price = dollar_price_element.text
+            gold_price = gold_price_element.text
            
             return dollar_price, gold_price # all prices are in "Rial"
         else:
