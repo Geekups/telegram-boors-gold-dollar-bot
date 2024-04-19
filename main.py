@@ -1,5 +1,5 @@
 import anonsurf_handler
-import get_dollar_and_gold
+# import get_dollar_and_gold
 import reg
 import send_to_channel
 import start_and_admin
