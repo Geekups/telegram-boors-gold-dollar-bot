@@ -3,14 +3,6 @@ from bs4 import BeautifulSoup
 
 
 
-def convert_farsi_to_english(farsi_text):
-    # Reshape the Farsi text
-    reshaped_text = reshape(farsi_text)
-    
-    # Reorder the reshaped text
-    bidi_text = get_display(reshaped_text)
-    
-    return bidi_text
 
 # Function to get the dollar and gold prices in Iranian Toman for any given time
 def get_prices():
