@@ -35,11 +35,3 @@ def get_prices():
     else:
         print("Failed to fetch page. Status code:", response.status_code)
         return None, None
-
-# Get the dollar and gold prices for the current time
-dollar_price, gold_price = get_prices()
-if dollar_price and gold_price:
-    print(dollar_price)
-    print(gold_price)
-else:
-    print("Failed to fetch prices.")
