@@ -6,7 +6,7 @@ from stock import stock_run as sto
 from anonsurf_handler import start_anonsurf , stop_anonsurf
 
 if __name__ == '__main__':
-    p0 = Process(target=start_anonsurf("90708060"))
+    p0 = Process(target=start_anonsurf(password))
     p1 = Process(target=st)
     p2 = Process(target=ch)
     p3 = Process(target=regs)
