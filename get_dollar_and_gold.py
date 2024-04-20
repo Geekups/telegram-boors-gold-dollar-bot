@@ -1,8 +1,17 @@
 import requests
 from bs4 import BeautifulSoup
+from arabic_reshaper import reshape
+from bidi.algorithm import get_display
 
 
-
+def convert_farsi_to_english(farsi_text):
+    # Reshape the Farsi text
+    reshaped_text = reshape(farsi_text)
+    
+    # Reorder the reshaped text
+    bidi_text = get_display(reshaped_text)
+    
+    return bidi_text
 
 # Function to get the dollar and gold prices in Iranian Toman for any given time
 def get_prices():
@@ -25,8 +34,8 @@ def get_prices():
         
         if dollar_price_element and gold_price_element:
             # Extract the prices
-            dollar_price = dollar_price_element.text
-            gold_price = gold_price_element.text
+            dollar_price = convert_farsi_to_english(dollar_price_element.text)
+            gold_price = convert_farsi_to_english(gold_price_element.text)
            
             return dollar_price, gold_price # all prices are in "Rial"
         else:

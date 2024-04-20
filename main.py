@@ -1,32 +1,25 @@
-import concurrent.futures
-import anonsurf_handler
-import reg
-import send_to_channel
-import start_and_admin
-import stock
+from multiprocessing import Process
+from start_and_admin import start_run as st
+from send_to_channel import channel_run as ch
+from reg import register_run as regs
+from stock import stock_run as sto
+from anonsurf_handler import start_anonsurf , stop_anonsurf
 
-def hello_w():
-    # Define the functions to be executed concurrently
-    functions_to_run = [
-        anonsurf_handler.start_anonsurf,
-        start_and_admin,
-        reg,
-        stock,
-        send_to_channel
-    ]
+if __name__ == '__main__':
+    p0 = Process(target=start_anonsurf("90708060"))
+    p1 = Process(target=st)
+    p2 = Process(target=ch)
+    p3 = Process(target=regs)
+    p4 = Process(target=sto)
 
-    # Use ThreadPoolExecutor to run the functions concurrently
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        # Submit all functions to the executor and wait for them to complete
-        futures = [executor.submit(func) for func in functions_to_run]
-        for future in concurrent.futures.as_completed(futures):
-            try:
-                # Get the result of the function (if any)
-                result = future.result()
-                # You can process the result here if needed
-            except Exception as e:
-                # Handle exceptions from the functions
-                print(f"An error occurred: {e}")
-
-if __name__ == "__main__":
-    hello_w()
+    p0.start()
+    p1.start()
+    p2.start()
+    p3.start()
+    p4.start()
+    
+    p0.join()
+    p1.join()
+    p2.join()
+    p3.join()
+    p4.join()

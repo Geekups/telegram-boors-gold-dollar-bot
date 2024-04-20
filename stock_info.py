@@ -49,5 +49,3 @@ def get_stock_info(symbol):
     except:
                 
             return (f"Failed to find the data for {symbol}.")
-
-print(get_stock_info("dfdولاد"))
