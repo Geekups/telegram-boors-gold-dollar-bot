@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message , InlineKeyboardButton , InlineKeyboardMarkup
 from tabulate import tabulate
 import pandas as pd
+from stock import stock_run
 
 import getpass
 from telethon import TelegramClient, sync
@@ -33,6 +34,12 @@ def start_run():
         def command1(bot , message):
             first_name= message.from_user.first_name
             bot.send_message(message.chat.id, f"سلام {first_name}! به ربات خوش اومدی.")
+            keyboard = [
+                    [InlineKeyboardButton("دریافت اطلاعات مشتریان", callback_data='get_user_info'),
+                    InlineKeyboardButton("ارسال پیام دسته جمعی" , callback_data='send_msg')]
+                ]     
+            reply_marks = InlineKeyboardMarkup(keyboard)       
+            message.reply_text(f"سلام {first_name}! به ربات خوش اومدی.", reply_markup=reply_marks)
 
         # Admin panel definition
         @bot.on_message(filters.command('admin') & filters.private)
