@@ -33,13 +33,18 @@ def start_run():
         @bot.on_message(filters.command('start') & filters.private)
         def command1(bot , message):
             first_name= message.from_user.first_name
-            bot.send_message(message.chat.id, f"سلام {first_name}! به ربات خوش اومدی.")
             keyboard = [
-                    [InlineKeyboardButton("دریافت اطلاعات مشتریان", callback_data='get_user_info'),
+                    [InlineKeyboardButton("دریافت اطلاعات مشتریان", callback_data='reg_button'),
                     InlineKeyboardButton("ارسال پیام دسته جمعی" , callback_data='send_msg')]
                 ]     
             reply_marks = InlineKeyboardMarkup(keyboard)       
             message.reply_text(f"سلام {first_name}! به ربات خوش اومدی.", reply_markup=reply_marks)
+        
+        @bot.on_callback_query(filters.regex('reg_button$'))
+        def say_reg(client, callback_query):
+            Message.reply_text("/register")
+
+
 
         # Admin panel definition
         @bot.on_message(filters.command('admin') & filters.private)
