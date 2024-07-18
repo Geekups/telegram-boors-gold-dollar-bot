@@ -42,7 +42,7 @@ def start_run():
         
         @bot.on_callback_query(filters.regex('reg_button$'))
         def say_reg(client, callback_query):
-            Message.reply_text("/register")
+            callback_query.message.reply_text("/register")
 
 
 
